@@ -71,6 +71,7 @@ if (document.body.dataset.page === 'home') {
    content.append(section);
   }
   for (const activity of unit.activities || []) {
+   if (activity.section) content.append(el('h2', 'chapter-heading', activity.section));
    const section = el('section', 'activity'); const heading = el('h2', 'activity-heading');
    heading.append(el('span', '', 'ACTIVITY ' + activity.number), el('span', 'activity-title', activity.title)); section.append(heading);
    if (!activity.resources?.length) section.append(el('p', 'quiet', '학습 활동을 준비하고 있어요.'));

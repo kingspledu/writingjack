@@ -11,7 +11,7 @@
 이전 초안의 apps.js, main.js, styles.css는 로컬에만 보관하며 배포에서 제외합니다.
 
 ## 반영한 자료
-Great Writing Foundations Unit 1·2, Great Writing 1 Unit 1·2·3, Bricks Vocabulary 3900 목차를 반영했습니다. Foundations Unit 1에는 스크린샷의 영상 2개, PDF 2개, Activity 1~4와 translation/quiz2 자리를 만들었습니다. 원본 파일과 앱은 아직 없어 준비 중 상태입니다. 두 번째 영상 제목은 임시입니다.
+Great Writing Foundations Unit 1·2, Great Writing 1 Unit 1·2·3, Bricks Vocabulary 3900 목차를 반영했습니다. Foundations Unit 1에는 스크린샷의 영상 2개, PDF 3개, Activity 1~17과 원본의 translation/quiz 활동 자리를 만들었습니다. 원본 파일과 앱은 아직 없어 준비 중 상태입니다. 영상과 PDF 이름은 공개 노션 원본의 실제 파일명을 사용합니다.
 
 GREAT WRITING 배너는 CSS와 텍스트로 만든 임시 표지입니다. 원본 표지를 받으면 교체할 수 있습니다. bit.ly/writingjack은 기존 화면의 제목이며 단축 URL 목적지를 변경한 것은 아닙니다. 노션 관리자용 게시 배너는 포함하지 않았습니다.
 
