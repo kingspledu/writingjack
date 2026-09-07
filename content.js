@@ -43,7 +43,7 @@ window.WRITING_BOOKS = [
           "title": "Identifying capital letters and final punctuation · translation",
           "label": "translation",
           "sourceUrl": "https://share.gemini.google/UBkbPHFHQeAQ",
-          "url": null
+          "url": "./apps/foundations/unit-1/activity-1/index.html"
         }
       ]
     },

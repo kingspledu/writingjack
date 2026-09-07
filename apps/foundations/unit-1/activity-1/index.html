@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Great Writing 1 Foundations Unit 1: Sentences : ACTIVITY 1</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: #f2f2f2;
+            overflow-x: hidden;
+        }
+
+        .kahoot-bg {
+            background-color: #46178f;
+        }
+
+        /* Kahoot Button Colors and Interactions */
+        .kahoot-red { background-color: #e21b3c; border-bottom: 4px solid #b0102b; box-shadow: 0 4px 0 rgba(0,0,0,0.2); }
+        .kahoot-blue { background-color: #1368ce; border-bottom: 4px solid #0c4d9a; box-shadow: 0 4px 0 rgba(0,0,0,0.2); }
+        .kahoot-yellow { background-color: #d89e00; border-bottom: 4px solid #a87b00; box-shadow: 0 4px 0 rgba(0,0,0,0.2); }
+        .kahoot-green { background-color: #26890c; border-bottom: 4px solid #1a5e08; box-shadow: 0 4px 0 rgba(0,0,0,0.2); }
+        
+        .kahoot-btn {
+            transition: transform 0.1s ease-in-out, filter 0.1s;
+            cursor: pointer;
+            position: relative;
+        }
+        
+        .kahoot-btn:active {
+            transform: translateY(4px);
+            border-bottom-width: 0px;
+            box-shadow: 0 0 0 rgba(0,0,0,0);
+            margin-bottom: 4px;
+        }
+
+        .kahoot-btn:hover {
+            filter: brightness(1.1);
+        }
+
+        .kahoot-selected {
+            border: 4px solid white !important;
+            opacity: 1 !important;
+        }
+
+        .dimmed {
+            opacity: 0.5;
+        }
+
+        /* SVGs for shapes */
+        .shape-icon {
+            width: 40px;
+            height: 40px;
+            fill: white;
+            flex-shrink: 0;
+        }
+
+        /* Standard Buttons */
+        .btn-primary {
+            background-color: #333333;
+            color: white;
+            transition: all 0.2s;
+        }
+        .btn-primary:hover {
+            background-color: #000000;
+        }
+
+        /* Utility classes */
+        .hidden { display: none !important; }
+        
+        /* Modal Overlay */
+        .modal-overlay {
+            background-color: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(4px);
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col items-center justify-center relative">
+
+    <div id="start-screen" class="kahoot-bg w-full min-h-screen flex flex-col items-center justify-center p-6 text-center text-white">
+        <div class="bg-white p-8 rounded-lg shadow-2xl max-w-2xl w-full text-gray-800 transform transition-transform hover:scale-105">
+            <h1 class="text-3xl font-extrabold mb-2 text-[#46178f]">Great Writing 1 Foundations Unit 1: Sentences</h1>
+            <h2 class="text-xl font-bold mb-8 text-gray-600">ACTIVITY 1 | Identifying capital letters and final punctuation</h2>
+            
+            <div class="flex flex-col gap-4 w-full max-w-md mx-auto">
+                <button onclick="startQuiz()" class="w-full py-4 text-xl font-bold text-white bg-[#26890c] rounded shadow-[0_4px_0_#1a5e08] hover:bg-[#2eb00d] active:shadow-none active:translate-y-1 transition-all">
+                    Start Quiz
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div id="quiz-screen" class="w-full min-h-screen flex flex-col items-center pt-8 pb-4 px-4 hidden">
+        
+        <!-- Progress Bar -->
+        <div class="w-full max-w-4xl mb-4 flex justify-between items-center font-bold text-gray-600">
+            <span id="question-counter" class="bg-white px-4 py-1 rounded-full shadow">Question 1 of 16</span>
+        </div>
+
+        <!-- Question Box -->
+        <div class="bg-white w-full max-w-4xl rounded shadow-lg p-6 md:p-10 mb-8 text-center min-h-[150px] flex flex-col justify-center items-center">
+            <h2 class="text-2xl md:text-3xl font-bold text-gray-800">Choose the correct sentence from the Korean sentence:</h2>
+            <p id="korean-text" class="text-3xl md:text-4xl font-extrabold text-[#46178f] mt-4"><b></b></p>
+        </div>
+
+        <!-- Warning Message Box (Hidden by default) -->
+        <div id="warning-msg" class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative mb-4 hidden w-full max-w-4xl font-bold text-center" role="alert">
+            Please select 1 more answer. (정답을 1개 더 선택하시오.)
+        </div>
+
+        <!-- Answer Grid -->
+        <div class="w-full max-w-4xl grid grid-cols-1 md:grid-cols-2 gap-4 flex-grow mb-4">
+            
+            <button id="btn-0" class="kahoot-btn kahoot-red rounded p-4 flex items-center shadow-lg w-full text-left" onclick="selectOption(0)">
+                <svg class="shape-icon mr-4" viewBox="0 0 32 32"><polygon points="16,4 30,28 2,28"></polygon></svg>
+                <span id="opt-0" class="text-white text-xl md:text-2xl font-bold flex-grow drop-shadow-md break-words">Option 1</span>
+            </button>
+            
+            <button id="btn-1" class="kahoot-btn kahoot-blue rounded p-4 flex items-center shadow-lg w-full text-left" onclick="selectOption(1)">
+                <svg class="shape-icon mr-4" viewBox="0 0 32 32"><polygon points="16,2 30,16 16,30 2,16"></polygon></svg>
+                <span id="opt-1" class="text-white text-xl md:text-2xl font-bold flex-grow drop-shadow-md break-words">Option 2</span>
+            </button>
+            
+            <button id="btn-2" class="kahoot-btn kahoot-yellow rounded p-4 flex items-center shadow-lg w-full text-left" onclick="selectOption(2)">
+                <svg class="shape-icon mr-4" viewBox="0 0 32 32"><circle cx="16" cy="16" r="14"></circle></svg>
+                <span id="opt-2" class="text-white text-xl md:text-2xl font-bold flex-grow drop-shadow-md break-words">Option 3</span>
+            </button>
+            
+            <button id="btn-3" class="kahoot-btn kahoot-green rounded p-4 flex items-center shadow-lg w-full text-left" onclick="selectOption(3)">
+                <svg class="shape-icon mr-4" viewBox="0 0 32 32"><rect x="4" y="4" width="24" height="24"></rect></svg>
+                <span id="opt-3" class="text-white text-xl md:text-2xl font-bold flex-grow drop-shadow-md break-words">Option 4</span>
+            </button>
+
+        </div>
+
+        <!-- Submit Button -->
+        <div class="w-full max-w-4xl flex justify-end">
+            <button onclick="submitAnswer()" class="btn-primary py-3 px-8 text-xl font-bold rounded shadow-lg">Submit Answer</button>
+        </div>
+
+    </div>
+
+    <div id="feedback-screen" class="w-full min-h-screen flex flex-col items-center justify-center p-6 text-white hidden">
+        <div class="text-center max-w-3xl w-full">
+            <div id="feedback-icon" class="text-8xl mb-4"></div>
+            <h1 id="feedback-title" class="text-5xl font-extrabold mb-6 drop-shadow-md">Correct!</h1>
+            
+            <div class="bg-white/20 p-6 rounded-lg backdrop-blur-sm shadow-xl mb-8 border border-white/30">
+                <h3 class="text-xl font-bold mb-2">Explanation:</h3>
+                <p id="feedback-explanation" class="text-2xl font-semibold leading-relaxed">...</p>
+            </div>
+
+            <button id="feedback-btn" class="bg-white text-gray-900 py-4 px-10 text-2xl font-bold rounded-full shadow-[0_4px_0_#cccccc] hover:bg-gray-100 active:shadow-none active:translate-y-1 transition-all">
+                Next Question
+            </button>
+        </div>
+    </div>
+
+    <div id="end-screen" class="kahoot-bg w-full min-h-screen flex flex-col items-center py-10 px-4 hidden">
+        <div class="w-full max-w-5xl bg-white rounded-lg shadow-2xl p-8">
+            <h1 class="text-3xl font-extrabold text-[#46178f] mb-2 text-center">Quiz Completed! / Teacher Mode</h1>
+            <p class="text-center text-gray-600 font-bold mb-8">All Questions and Correct Answers</p>
+            
+            <div class="overflow-x-auto">
+                <table class="w-full text-left border-collapse">
+                    <thead>
+                        <tr class="bg-gray-200 text-gray-800">
+                            <th class="p-4 border-b-2 border-gray-300 font-bold">#</th>
+                            <th class="p-4 border-b-2 border-gray-300 font-bold">Korean Sentence</th>
+                            <th class="p-4 border-b-2 border-gray-300 font-bold">Correct English Translation</th>
+                        </tr>
+                    </thead>
+                    <tbody id="qa-list" class="text-gray-700">
+                        <!-- Populated by JS -->
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="mt-8 flex justify-center">
+                <button onclick="restartFullQuiz()" class="py-3 px-8 text-xl font-bold text-white bg-[#46178f] rounded shadow-[0_4px_0_#2a0d59] hover:bg-[#5b1fc2] active:shadow-none active:translate-y-1 transition-all">
+                    Go to Start Menu
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Data Extraction directly from provided CSV prompt
+        const rawQuizData = [
+            { kr: "바나나는 노란색입니다.", correct: "Bananas are yellow.", wrong: ["What color is a carrot?", "Oranges are orange.", "What color are tomatoes?"] },
+            { kr: "사과는 빨간색, 노란색, 또는 초록색입니다.", correct: "Apples are red, yellow, or green.", wrong: ["What color is cabbage?", "A blackberry is black.", "What color is a lemon?"] },
+            { kr: "당근은 무슨 색인가요?", correct: "What color is a carrot?", wrong: ["Bananas are yellow.", "A watermelon is green and red.", "Broccoli is green."] },
+            { kr: "쌀은 흰색입니다.", correct: "Rice is white.", wrong: ["Apples are red, yellow, or green.", "An eggplant is purple.", "What is your favorite vegetable?"] },
+            { kr: "양배추는 무슨 색인가요?", correct: "What color is cabbage?", wrong: ["Rice is white.", "Can you give an example of a white fruit?", "A lime is green."] },
+            { kr: "가지는 보라색입니다.", correct: "An eggplant is purple.", wrong: ["Bananas are yellow.", "Oranges are orange.", "What is your favorite fruit?"] },
+            { kr: "오렌지는 주황색입니다.", correct: "Oranges are orange.", wrong: ["Apples are red, yellow, or green.", "A watermelon is green and red.", "What color is a lemon?"] },
+            { kr: "수박은 초록색과 빨간색입니다.", correct: "A watermelon is green and red.", wrong: ["What color is a carrot?", "A blackberry is black.", "Broccoli is green."] },
+            { kr: "블랙베리는 검은색입니다.", correct: "A blackberry is black.", wrong: ["Rice is white.", "Can you give an example of a white fruit?", "What color are tomatoes?"] },
+            { kr: "하얀색 과일의 예를 들어줄 수 있나요?", correct: "Can you give an example of a white fruit?", wrong: ["What color is cabbage?", "An eggplant is purple.", "A lime is green."] },
+            { kr: "브로콜리는 초록색입니다.", correct: "Broccoli is green.", wrong: ["Bananas are yellow.", "Oranges are orange.", "What is your favorite vegetable?"] },
+            { kr: "토마토는 무슨 색인가요?", correct: "What color are tomatoes?", wrong: ["Apples are red, yellow, or green.", "A watermelon is green and red.", "What is your favorite fruit?"] },
+            { kr: "라임은 초록색입니다.", correct: "A lime is green.", wrong: ["What color is a carrot?", "A blackberry is black.", "What color is a lemon?"] },
+            { kr: "레몬은 무슨 색인가요?", correct: "What color is a lemon?", wrong: ["Rice is white.", "Can you give an example of a white fruit?", "Broccoli is green."] },
+            { kr: "당신이 가장 좋아하는 과일은 무엇인가요?", correct: "What is your favorite fruit?", wrong: ["What color is cabbage?", "An eggplant is purple.", "What color are tomatoes?"] },
+            { kr: "당신이 가장 좋아하는 채소는 무엇인가요?", correct: "What is your favorite vegetable?", wrong: ["Bananas are yellow.", "Oranges are orange.", "A lime is green."] }
+        ];
+
+        let currentQuestionIndex = 0;
+        let currentOptions = [];
+        let selectedOptionIndex = null;
+        let isAnswerSubmitted = false;
+
+        function hideAllScreens() {
+            document.getElementById('start-screen').classList.add('hidden');
+            document.getElementById('quiz-screen').classList.add('hidden');
+            document.getElementById('feedback-screen').classList.add('hidden');
+            document.getElementById('end-screen').classList.add('hidden');
+        }
+
+        function shuffleArray(array) {
+            for (let i = array.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [array[i], array[j]] = [array[j], array[i]];
+            }
+            return array;
+        }
+
+        function startQuiz() {
+            currentQuestionIndex = 0;
+            hideAllScreens();
+            document.getElementById('quiz-screen').classList.remove('hidden');
+            loadQuestion();
+        }
+
+        function loadQuestion() {
+            isAnswerSubmitted = false;
+            selectedOptionIndex = null;
+            document.getElementById('warning-msg').classList.add('hidden');
+
+            const currentQ = rawQuizData[currentQuestionIndex];
+            
+            // Bold the Korean word for discrimination as requested
+            document.getElementById('korean-text').innerHTML = `<b>${currentQ.kr}</b>`;
+            document.getElementById('question-counter').innerText = `Question ${currentQuestionIndex + 1} of ${rawQuizData.length}`;
+
+            // Prepare options and shuffle
+            currentOptions = [
+                { text: currentQ.correct, isCorrect: true },
+                { text: currentQ.wrong[0], isCorrect: false },
+                { text: currentQ.wrong[1], isCorrect: false },
+                { text: currentQ.wrong[2], isCorrect: false }
+            ];
+            
+            currentOptions = shuffleArray(currentOptions);
+
+            // Reset buttons UI
+            for (let i = 0; i < 4; i++) {
+                const btn = document.getElementById(`btn-${i}`);
+                btn.classList.remove('kahoot-selected', 'dimmed');
+                document.getElementById(`opt-${i}`).innerText = currentOptions[i].text;
+            }
+        }
+
+        function selectOption(index) {
+            if (isAnswerSubmitted) return;
+            selectedOptionIndex = index;
+            document.getElementById('warning-msg').classList.add('hidden');
+
+            // Update UI for selection
+            for (let i = 0; i < 4; i++) {
+                const btn = document.getElementById(`btn-${i}`);
+                if (i === index) {
+                    btn.classList.add('kahoot-selected');
+                    btn.classList.remove('dimmed');
+                } else {
+                    btn.classList.remove('kahoot-selected');
+                    btn.classList.add('dimmed');
+                }
+            }
+        }
+
+        function submitAnswer() {
+            if (isAnswerSubmitted) return;
+            
+            if (selectedOptionIndex === null) {
+                // Warning if fewer than required selected
+                document.getElementById('warning-msg').classList.remove('hidden');
+                return;
+            }
+
+            isAnswerSubmitted = true;
+            const selectedOpt = currentOptions[selectedOptionIndex];
+            const currentQ = rawQuizData[currentQuestionIndex];
+            
+            showFeedback(selectedOpt.isCorrect, selectedOpt.text, currentQ.correct, currentQ.kr);
+        }
+
+        function showFeedback(isCorrect, selectedText, correctText, krText) {
+            hideAllScreens();
+            const feedbackScreen = document.getElementById('feedback-screen');
+            const title = document.getElementById('feedback-title');
+            const icon = document.getElementById('feedback-icon');
+            const exp = document.getElementById('feedback-explanation');
+            const btn = document.getElementById('feedback-btn');
+
+            feedbackScreen.classList.remove('hidden', 'bg-[#26890c]', 'bg-[#e21b3c]');
+            
+            if (isCorrect) {
+                feedbackScreen.classList.add('bg-[#26890c]');
+                title.innerText = "Correct!";
+                icon.innerText = "✔";
+                exp.innerHTML = `The correct English sentence for "<b>${krText}</b>" is indeed "<b>${correctText}</b>". It features proper capitalization and final punctuation.`;
+                
+                if (currentQuestionIndex < rawQuizData.length - 1) {
+                    btn.innerText = "Next Question";
+                    btn.onclick = () => {
+                        currentQuestionIndex++;
+                        hideAllScreens();
+                        document.getElementById('quiz-screen').classList.remove('hidden');
+                        loadQuestion();
+                    };
+                } else {
+                    btn.innerText = "View Results";
+                    btn.onclick = showEndScreen;
+                }
+            } else {
+                // Rule: Must restart from the beginning if wrong
+                feedbackScreen.classList.add('bg-[#e21b3c]');
+                title.innerText = "Incorrect!";
+                icon.innerText = "✖";
+                exp.innerHTML = `You chose "<i>${selectedText}</i>".<br><br>The correct answer for "<b>${krText}</b>" is "<b>${correctText}</b>".<br><br><span class="text-yellow-300 font-bold">Rule: You must restart from the beginning.</span>`;
+                
+                btn.innerText = "Restart Quiz";
+                btn.onclick = () => {
+                    startQuiz();
+                };
+            }
+        }
+
+        function showEndScreen() {
+            hideAllScreens();
+            document.getElementById('end-screen').classList.remove('hidden');
+            
+            const tbody = document.getElementById('qa-list');
+            tbody.innerHTML = '';
+            
+            rawQuizData.forEach((q, index) => {
+                const tr = document.createElement('tr');
+                tr.className = "border-b border-gray-200 hover:bg-gray-100 transition-colors";
+                tr.innerHTML = `
+                    <td class="p-4 font-bold text-gray-500">${index + 1}</td>
+                    <td class="p-4 font-bold text-[#46178f]">${q.kr}</td>
+                    <td class="p-4 font-bold text-[#26890c]">${q.correct}</td>
+                `;
+                tbody.appendChild(tr);
+            });
+        }
+
+        function restartFullQuiz() {
+            hideAllScreens();
+            document.getElementById('start-screen').classList.remove('hidden');
+        }
+
+    </script>
+</body>
+</html>
