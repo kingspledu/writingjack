@@ -8,7 +8,7 @@
 - writing.js / writing.css: 화면 표시와 디자인
 - apps/: 독립 웹앱 코드 저장 위치
 
-이전 초안의 apps.js, main.js, styles.css는 보관되어 있으며 현재 페이지에서는 사용하지 않습니다.
+이전 초안의 apps.js, main.js, styles.css는 로컬에만 보관하며 배포에서 제외합니다.
 
 ## 반영한 자료
 Great Writing Foundations Unit 1·2, Great Writing 1 Unit 1·2·3, Bricks Vocabulary 3900 목차를 반영했습니다. Foundations Unit 1에는 스크린샷의 영상 2개, PDF 2개, Activity 1~4와 translation/quiz2 자리를 만들었습니다. 원본 파일과 앱은 아직 없어 준비 중 상태입니다. 두 번째 영상 제목은 임시입니다.
@@ -30,4 +30,4 @@ PDF는 files 항목의 url에 './materials/파일명.pdf' 등을 입력합니다
 5. GitHub 저장소와 호스팅 주소 확정 후 Pages 배포
 
 React 등은 코드를 받은 후 필요한 빌드 설정을 적용합니다. 비밀 API 키가 필요한 앱은 공개 정적 파일에 키를 넣지 않고 서버 구성을 결정합니다.
-배포 시 이 폴더 내용이 저장소 루트에 위치하도록 구성합니다. 내부 경로는 상대 경로입니다. 아직 GitHub 배포는 하지 않았습니다.
+배포 시 이 폴더 내용이 저장소 루트에 위치하도록 구성합니다. 내부 경로는 상대 경로입니다. GitHub Pages: https://kingspledu.github.io/writingjack/ — main 브랜치에 푸시하면 자동 배포됩니다.
