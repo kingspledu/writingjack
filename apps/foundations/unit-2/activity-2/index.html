@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Great Writing Foundations: Unit 2. The Simple Present of Be: ACTIVITY 2 | Writing sentences with be</title>
+<style>
+:root{--purple:#46178f;--red:#e21b3c;--blue:#1368ce;--yellow:#d89e00;--green:#26890c;--ink:#242424}
+*{box-sizing:border-box}body{margin:0;font-family:Montserrat,Arial,sans-serif;background:#f2f2f2;color:var(--ink)}button,input{font:inherit}.screen{min-height:100vh;padding:24px}.hidden{display:none!important}
+.center{display:flex;align-items:center;justify-content:center}.purple{background:var(--purple);color:#fff}.start-card,.modal-card,.results-card{background:#fff;color:var(--ink);border-radius:12px;box-shadow:0 10px 32px #0004;padding:34px;width:min(760px,100%);text-align:center}
+h1{font-size:clamp(24px,4vw,38px);line-height:1.2;color:var(--purple);margin:0 0 12px}h2{font-size:clamp(17px,2.5vw,23px);color:#666;margin:0 0 30px}.instructions{background:#f6f2fb;border-left:5px solid var(--purple);padding:14px;text-align:left;margin:0 auto 28px;max-width:600px}
+.actions{display:grid;gap:14px;max-width:430px;margin:auto}.action{border:0;border-radius:7px;padding:16px;color:#fff;font-size:19px;font-weight:800;cursor:pointer;box-shadow:0 4px 0 #0005}.action:active{transform:translateY(4px);box-shadow:none}.start{background:var(--green)}.teacher{background:var(--blue)}
+.quiz{padding-top:28px}.top{max-width:950px;margin:0 auto 14px;display:flex;justify-content:space-between;align-items:center;font-weight:800;color:#666}.pill{background:#fff;padding:7px 14px;border-radius:999px;box-shadow:0 2px 8px #0002}.progress{height:9px;background:#ddd;border-radius:10px;overflow:hidden;flex:1;margin-left:15px}.progress>div{height:100%;background:var(--purple);transition:width .2s}
+.prompt{background:#fff;width:min(950px,100%);margin:0 auto 22px;padding:30px;border-radius:8px;box-shadow:0 4px 14px #0002;text-align:center}.prompt h2{color:#333;margin:0 0 15px}.sentence{font-size:clamp(25px,4vw,39px);font-weight:600}.sentence strong{color:var(--purple);font-weight:900}
+.warning{max-width:950px;margin:0 auto 14px;background:#fee2e2;border:1px solid #ef4444;color:#b91c1c;padding:12px;border-radius:6px;text-align:center;font-weight:800}
+.answers{width:min(950px,100%);margin:auto;display:grid;grid-template-columns:1fr 1fr;gap:14px}.answer{min-height:118px;border:4px solid transparent;border-radius:8px;color:#fff;padding:18px;display:flex;align-items:center;text-align:left;cursor:pointer;box-shadow:0 5px 0 #0004;font-size:clamp(17px,2.4vw,24px);font-weight:700}.answer:hover{filter:brightness(1.08)}.answer.selected{border-color:#fff;outline:4px solid #222}.answer.dim{opacity:.52}.shape{font-size:31px;width:48px;flex:none}.answer strong{text-decoration:underline}.red{background:var(--red)}.blue{background:var(--blue)}.yellow{background:var(--yellow)}.green{background:var(--green)}
+.submit-row{width:min(950px,100%);margin:17px auto 0;text-align:right}.submit{border:0;border-radius:6px;background:#292929;color:#fff;padding:13px 25px;font-weight:800;font-size:18px;cursor:pointer}
+.feedback{text-align:center;color:#fff;flex-direction:column}.feedback.correct{background:var(--green)}.feedback.wrong{background:var(--red)}.feedback-icon{font-size:75px}.feedback h1{color:#fff;font-size:48px}.explanation{background:#ffffff25;border:1px solid #ffffff55;border-radius:10px;padding:23px;width:min(720px,100%);font-size:20px;margin:10px 0 24px}.next{border:0;background:#fff;border-radius:999px;padding:14px 28px;font-weight:800;font-size:20px;cursor:pointer}
+.results-card{width:min(1050px,100%);text-align:left}.results-card h1,.results-card>p{text-align:center}.table-wrap{overflow-x:auto}table{width:100%;border-collapse:collapse}th,td{padding:13px;border-bottom:1px solid #ddd;text-align:left}th{background:#eee}td:nth-child(3){color:var(--green);font-weight:800}
+.modal{position:fixed;inset:0;background:#000b;z-index:10}.modal-card{max-width:410px}.modal-card input{width:100%;padding:13px;border:2px solid #ccc;border-radius:6px;font-size:18px;margin:12px 0}.error{color:var(--red);font-weight:800}.modal-actions{display:flex;justify-content:flex-end;gap:10px;margin-top:15px}.modal-actions button{border:0;border-radius:5px;padding:10px 16px;font-weight:700;cursor:pointer}.unlock{background:var(--purple);color:#fff}.restart{display:block;margin:24px auto 0;background:var(--purple)}
+@media(max-width:650px){.screen{padding:15px}.start-card{padding:24px 18px}.answers{grid-template-columns:1fr}.answer{min-height:91px}.prompt{padding:22px 14px}.top{align-items:flex-start;flex-direction:column;gap:10px}.progress{width:100%;margin:0}.results-card{padding:20px 12px}th,td{padding:9px;font-size:12px}}
+</style>
+</head>
+<body>
+<section id="start-screen" class="screen center purple">
+ <div class="start-card">
+  <h1>Great Writing Foundations: Unit 2<br>The Simple Present of Be</h1>
+  <h2>ACTIVITY 2 | Writing sentences with be</h2>
+  <p class="instructions"><strong>Directions:</strong> Choose the correctly written sentence that tells where each person is from.</p>
+  <div class="actions"><button class="action start" id="start-btn">Start Quiz</button><button class="action teacher" id="teacher-btn">Teacher Mode</button></div>
+ </div>
+</section>
+<section id="quiz-screen" class="screen quiz hidden">
+ <div class="top"><span id="counter" class="pill"></span><div class="progress"><div id="progress-bar"></div></div></div>
+ <div class="prompt"><h2>Choose the correct sentence.</h2><div id="question" class="sentence"></div></div>
+ <div id="warning" class="warning hidden" role="alert">Please select 1 more answer.</div>
+ <div id="answers" class="answers"></div>
+ <div class="submit-row"><button id="submit-btn" class="submit">Submit Answer</button></div>
+</section>
+<section id="feedback-screen" class="screen center feedback hidden">
+ <div id="feedback-icon" class="feedback-icon"></div><h1 id="feedback-title"></h1><div id="explanation" class="explanation"></div><button id="next-btn" class="next"></button>
+</section>
+<section id="results-screen" class="screen center purple hidden">
+ <div class="results-card"><h1 id="results-title">All Sentences and Correct Answers</h1><p>Great Writing Foundations · Unit 2 · Activity 2</p><div class="table-wrap"><table><thead><tr><th>#</th><th>Prompt</th><th>Correct answer</th></tr></thead><tbody id="results-body"></tbody></table></div><button id="restart-btn" class="action restart">Go to Start Menu</button></div>
+</section>
+<div id="password-modal" class="modal center hidden" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+ <div class="modal-card"><h1 id="modal-title">Teacher Mode</h1><p>Enter the teacher password to view all answers.</p><input id="password" type="password" autocomplete="current-password" aria-label="Teacher password"><p id="password-error" class="error hidden">Incorrect password.</p><div class="modal-actions"><button id="cancel-btn">Cancel</button><button id="unlock-btn" class="unlock">Unlock</button></div></div>
+</div>
+<script>
+const questions=[
+ {subject:"Luisa",country:"Italy",plural:false},
+ {subject:"Wei",country:"China",plural:false},
+ {subject:"Marco",country:"Brazil",plural:false},
+ {subject:"Toshio",country:"Japan",plural:false},
+ {subject:"Toshio and Atsuro",country:"Japan",plural:true},
+ {subject:"Luisa and Valentina",country:"Italy",plural:true},
+ {subject:"Faisal",country:"Saudi Arabia",plural:false},
+ {subject:"Maria",country:"Guatemala",plural:false},
+ {subject:"Elena",country:"Spain",plural:false},
+ {subject:"Pierre",country:"France",plural:false},
+ {subject:"Min-jun and Ji-woo",country:"South Korea",plural:true},
+ {subject:"Amina",country:"Egypt",plural:false},
+ {subject:"Carlos and Sofia",country:"Mexico",plural:true},
+ {subject:"Emma",country:"Canada",plural:false},
+ {subject:"Omar and Noor",country:"Jordan",plural:true}
+];
+const colors=["red","blue","yellow","green"],shapes=["▲","◆","●","■"];
+let index=0,selected=null,options=[];
+const $=id=>document.getElementById(id);
+function hideAll(){["start-screen","quiz-screen","feedback-screen","results-screen"].forEach(id=>$(id).classList.add("hidden"))}
+function shuffle(items){const a=[...items];for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a}
+function sentence(q,verb){return q.subject+" "+verb+" from "+q.country+"."}
+function buildOptions(q){
+ const right=q.plural?"are":"is";
+ const wrong=q.plural?["is","am","is are"]:["are","am","are is"];
+ return shuffle([{verb:right,correct:true},...wrong.map(verb=>({verb,correct:false}))]);
+}
+function startQuiz(){index=0;hideAll();$("quiz-screen").classList.remove("hidden");loadQuestion()}
+function loadQuestion(){
+ selected=null;const q=questions[index];options=buildOptions(q);$("warning").classList.add("hidden");
+ $("counter").textContent="Question "+(index+1)+" of "+questions.length;$("progress-bar").style.width=((index+1)/questions.length*100)+"%";
+ $("question").innerHTML="<strong>"+q.subject+"</strong> ___ from "+q.country+".";
+ const box=$("answers");box.replaceChildren();
+ options.forEach((option,i)=>{const b=document.createElement("button");b.className="answer "+colors[i];b.type="button";
+  b.innerHTML='<span class="shape">'+shapes[i]+'</span><span>'+q.subject+' <strong>'+option.verb+'</strong> from '+q.country+'.</span>';
+  b.addEventListener("click",()=>selectAnswer(i));box.append(b)});
+}
+function selectAnswer(i){selected=i;$("warning").classList.add("hidden");[...$("answers").children].forEach((b,n)=>{b.classList.toggle("selected",n===i);b.classList.toggle("dim",n!==i)})}
+function submitAnswer(){
+ if(selected===null){$("warning").textContent="Please select 1 more answer."; $("warning").classList.remove("hidden");return}
+ const q=questions[index],choice=options[selected],correct=q.plural?"are":"is";hideAll();
+ const feedback=$("feedback-screen");feedback.className="screen center feedback "+(choice.correct?"correct":"wrong");
+ $("feedback-icon").textContent=choice.correct?"✔":"✖";$("feedback-title").textContent=choice.correct?"Correct!":"Incorrect!";
+ $("explanation").innerHTML=choice.correct
+  ?'<strong>'+sentence(q,correct)+'</strong><br>'+ (q.plural?"The subject names two people, so we use <strong>are</strong>.":"The subject names one person, so we use <strong>is</strong>.")
+  :'You chose <strong>'+sentence(q,choice.verb)+'</strong><br>The correct answer is <strong>'+sentence(q,correct)+'</strong><br>'+(q.plural?"Two people need <strong>are</strong>.":"One person needs <strong>is</strong>.")+'<br><strong>You must restart from Question 1.</strong>';
+ $("next-btn").textContent=choice.correct?(index===questions.length-1?"View All Answers":"Next Question"):"Restart Quiz";
+ $("next-btn").onclick=choice.correct?()=>{if(index===questions.length-1)showResults(false);else{index++;hideAll();$("quiz-screen").classList.remove("hidden");loadQuestion()}}:startQuiz;
+}
+function showResults(teacher){hideAll();$("results-screen").classList.remove("hidden");$("results-title").textContent=teacher?"Teacher Answer List":"Quiz Completed!";
+ const body=$("results-body");body.replaceChildren();questions.forEach((q,i)=>{const tr=document.createElement("tr"),correct=q.plural?"are":"is";
+  [String(i+1),q.subject+" — "+q.country,sentence(q,correct)].forEach(text=>{const td=document.createElement("td");td.textContent=text;tr.append(td)});body.append(tr)});
+}
+async function verifyPassword(){
+ const bytes=new TextEncoder().encode($("password").value),digest=await crypto.subtle.digest("SHA-256",bytes);
+ const hash=[...new Uint8Array(digest)].map(x=>x.toString(16).padStart(2,"0")).join("");
+ if(hash==="75992a5ac67ff644d3063976c2effd10bdd93fcc109798e3d5c1acf2e530d01a"){$("password-modal").classList.add("hidden");$("password").value="";showResults(true)}
+ else $("password-error").classList.remove("hidden");
+}
+$("start-btn").addEventListener("click",startQuiz);
+$("submit-btn").addEventListener("click",submitAnswer);
+$("teacher-btn").addEventListener("click",()=>{$("password").value="";$("password-error").classList.add("hidden");$("password-modal").classList.remove("hidden");$("password").focus()});
+$("cancel-btn").addEventListener("click",()=>$("password-modal").classList.add("hidden"));
+$("unlock-btn").addEventListener("click",verifyPassword);
+$("password").addEventListener("keydown",e=>{if(e.key==="Enter")verifyPassword()});
+$("restart-btn").addEventListener("click",()=>{hideAll();$("start-screen").classList.remove("hidden")});
+</script>
+</body>
+</html>

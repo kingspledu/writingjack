@@ -241,7 +241,24 @@ window.WRITING_BOOKS = [
     }
   ]
 },
-  { id: 'unit-2', title: 'Unit 2' }
+  {
+    id: 'unit-2',
+    title: 'Unit 2',
+    heading: 'THE SIMPLE PRESENT OF BE',
+    activities: [
+      {
+        number: 2,
+        title: 'Writing sentences with be',
+        resources: [
+          {
+            title: 'Writing sentences with be',
+            label: 'quiz',
+            url: './apps/foundations/unit-2/activity-2/index.html'
+          }
+        ]
+      }
+    ]
+  }
  ] },
  { id: 'book-1', title: 'Great Writing 1', units: [
   { id: 'unit-1', title: 'Book 1 Unit 1: Understanding Sentence Basics' },
