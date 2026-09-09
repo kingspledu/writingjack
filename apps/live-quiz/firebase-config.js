@@ -4,7 +4,7 @@
 export const firebaseConfig = {
   apiKey: "AIzaSyAzHVIEh7bukuGC5pUafWRtki_ElRy6nVk",
   authDomain: "live-quiz-df477.firebaseapp.com",
-  databaseURL: "https://live-quiz-df477-default-rtdb.asia-southeast1.firebasedatabase.app",
+  databaseURL: "https://live-quiz-df477-default-rtdb.firebaseio.com",
   projectId: "live-quiz-df477",
   storageBucket: "live-quiz-df477.firebasestorage.app",
   messagingSenderId: "264110810395",
