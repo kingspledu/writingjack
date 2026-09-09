@@ -31,9 +31,36 @@ $('#startQuiz').onclick=()=>update(ref(db,`rooms/${roomCode}`),{status:'question
 function renderQuestion(){show('#game');const index=room.currentQuestion,q=room.quiz.questions[index],revealed=room.status==='revealed'||room.reveal;$('#gameCode').textContent=`${roomCode} · ${index+1}/${room.quiz.questions.length}`;$('#progressBar').style.width=`${(index+1)/room.quiz.questions.length*100}%`;$('#questionText').textContent=q.question;const answer=room.players?.[uid]?.answers?.[index];$('#choices').replaceChildren(...q.choices.map((choice,i)=>{const b=document.createElement('button');b.className='choice';b.textContent=choice;b.disabled=isHost()||answer!==undefined||revealed;if(answer===i)b.classList.add('selected');if(revealed)b.classList.add(i===q.answer?'correct':answer===i?'wrong':'');b.onclick=()=>submitAnswer(i);return b}));$('#hostControls').classList.toggle('hidden',!isHost());$('#revealAnswer').classList.toggle('hidden',revealed);$('#nextQuestion').classList.toggle('hidden',!revealed);$('#nextQuestion').textContent=index===room.quiz.questions.length-1?'결과 보기':'다음 문제';const answers=Object.values(room.players||{}).filter(p=>p.answers?.[index]!==undefined).length;$('#answerStatus').classList.toggle('hidden',!isHost()&&!revealed);$('#answerStatus').textContent=isHost()?`${answers}/${Object.keys(room.players||{}).length}명 응답`:(revealed?(answer===q.answer?'정답입니다!':'아쉬워요. 정답을 확인하세요.'):'답을 제출했습니다.');startTimer(q.timeLimit,room.questionStartedAt,revealed);lastQuestion=index}
 function startTimer(limit,started,revealed){if(revealed){$('#timer').textContent='정답 공개';return}const tick=()=>{const left=Math.max(0,limit-Math.floor((Date.now()-started)/1000));$('#timer').textContent=`${left}초`;if(!left){clearInterval(timerId);if(isHost())reveal()}};tick();timerId=setInterval(tick,500)}
 async function submitAnswer(choice){const q=room.quiz.questions[room.currentQuestion],elapsed=Math.max(0,(Date.now()-room.questionStartedAt)/1000),bonus=choice===q.answer?Math.max(500,Math.round(1000-(elapsed/q.timeLimit)*500)):0;const playerRef=ref(db,`rooms/${roomCode}/players/${uid}`);await runTransaction(playerRef,p=>{if(!p||p.answers?.[room.currentQuestion]!==undefined)return;p.answers=p.answers||{};p.answers[room.currentQuestion]=choice;p.score=(p.score||0)+bonus;return p})}
-async function reveal(){await update(ref(db,`rooms/${roomCode}`),{status:'revealed',reveal:true})}
+async function reveal(){
+  const button=$('#revealAnswer');
+  button.disabled=true;
+  button.textContent='공개하는 중…';
+  try{
+    await update(ref(db,`rooms/${roomCode}`),{status:'revealed',reveal:true});
+    room.status='revealed';
+    room.reveal=true;
+    renderQuestion();
+  }catch(err){
+    button.disabled=false;
+    button.textContent='정답 공개';
+    $('#answerStatus').classList.remove('hidden');
+    $('#answerStatus').textContent=`정답 공개 실패: ${err.message}`;
+  }
+}
 $('#revealAnswer').onclick=reveal;
-$('#nextQuestion').onclick=()=>{const next=room.currentQuestion+1;if(next>=room.quiz.questions.length)update(ref(db,`rooms/${roomCode}`),{status:'results'});else update(ref(db,`rooms/${roomCode}`),{status:'question',currentQuestion:next,reveal:false,questionStartedAt:Date.now()})};
+$('#nextQuestion').onclick=async()=>{
+  const button=$('#nextQuestion');
+  button.disabled=true;
+  try{
+    const next=room.currentQuestion+1;
+    if(next>=room.quiz.questions.length)await update(ref(db,`rooms/${roomCode}`),{status:'results'});
+    else await update(ref(db,`rooms/${roomCode}`),{status:'question',currentQuestion:next,reveal:false,questionStartedAt:Date.now()});
+  }catch(err){
+    button.disabled=false;
+    $('#answerStatus').classList.remove('hidden');
+    $('#answerStatus').textContent=`다음 문제 이동 실패: ${err.message}`;
+  }
+};
 function renderResults(){show('#results');const players=Object.entries(room.players||{}).map(([id,p])=>({id,...p})).sort((a,b)=>(b.score||0)-(a.score||0));$('#ranking').replaceChildren(...players.map((p,i)=>{const el=document.createElement('div');el.className='rank-item';el.innerHTML=`<span>${i+1}. ${escapeText(p.name)}</span><span>${p.score||0}점</span>`;return el}));const me=room.players?.[uid];$('#myResult').innerHTML=!isHost()&&me?`<div class="score">${me.score||0}</div><p>수고했어요, ${escapeText(me.name)}!</p>`:'';$('#resultControls').classList.toggle('hidden',!isHost())}
 $('#restartQuiz').onclick=()=>{const updates={status:'lobby',currentQuestion:-1,reveal:false};Object.keys(room.players||{}).forEach(id=>{updates[`players/${id}/score`]=0;updates[`players/${id}/answers`]=null});update(ref(db,`rooms/${roomCode}`),updates)};
 $('#closeRoom').onclick=async()=>{if(confirm('방을 종료할까요?'))await remove(ref(db,`rooms/${roomCode}`))};
