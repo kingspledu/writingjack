@@ -1,0 +1,23 @@
+{
+  "title": "영어 표현 확인 퀴즈",
+  "questions": [
+    {
+      "question": "'도서관에'에 해당하는 영어 표현은?",
+      "choices": ["to the library", "at the school", "in the class", "from home"],
+      "answer": 0,
+      "timeLimit": 20
+    },
+    {
+      "question": "She showed us books.의 뜻은?",
+      "choices": ["그녀는 책을 샀다.", "그녀는 우리에게 책을 보여 주었다.", "그녀는 책을 읽었다.", "그녀는 책을 빌렸다."],
+      "answer": 1,
+      "timeLimit": 20
+    },
+    {
+      "question": "빈칸에 알맞은 말은? We ___ she was George Washington.",
+      "choices": ["think", "thought", "talked", "showed"],
+      "answer": 1,
+      "timeLimit": 15
+    }
+  ]
+}
